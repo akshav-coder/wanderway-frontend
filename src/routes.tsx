@@ -1,6 +1,6 @@
 // src/routes.tsx
 import React from "react";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import AppHeader from "./components/common/AppHeader";
 import SignIn from "./pages/SignIn";
@@ -10,18 +10,18 @@ import Planner from "./pages/Planner";
 import HotelBooking from "./pages/HotelBooking";
 
 // Layout component to include AppHeader on all pages
-const Layout: React.FC = () => {
-  return (
-    <>
-      <AppHeader />
-      <Outlet /> {/* Render the matched child route */}
-    </>
-  );
-};
+// const Layout: React.FC = () => {
+//   return (
+//     <>
+//       <AppHeader />
+//       <Outlet /> {/* Render the matched child route */}
+//     </>
+//   );
+// };
 
 const router = createBrowserRouter([
   {
-    element: <Layout />, // Wrap all routes with Layout to include AppHeader
+    element: <AppHeader />, // Wrap all routes with Layout to include AppHeader
     children: [
       {
         path: "/",

@@ -16,6 +16,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import ExploreIcon from "@mui/icons-material/Explore";
 import FeedIcon from "@mui/icons-material/DynamicFeed";
 import { AppBar } from "@mui/material";
+import { Link, Outlet } from "react-router-dom"; // Import Link from react-router-dom
 
 const drawerWidth = 240;
 
@@ -73,15 +74,15 @@ export default function AppHeader() {
   };
 
   const pages = [
-    { text: "Home", icon: <HomeIcon /> },
-    { text: "Explore", icon: <ExploreIcon /> },
-    { text: "Feed", icon: <FeedIcon /> },
+    { text: "Home", icon: <HomeIcon />, path: "/" },
+    { text: "Explore", icon: <ExploreIcon />, path: "/planner" },
+    { text: "Feed", icon: <FeedIcon />, path: "/hotel-booking" },
   ];
 
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed">
+      <AppBar position="fixed" elevation={0}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -106,6 +107,8 @@ export default function AppHeader() {
           {pages.map((page) => (
             <ListItem key={page.text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
+                component={Link} // Use Link component to enable routing
+                to={page.path} // Specify the path for the route
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
@@ -132,9 +135,7 @@ export default function AppHeader() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Typography paragraph>
-          This is the main content area for the selected page.
-        </Typography>
+        <Outlet />
       </Box>
     </Box>
   );
