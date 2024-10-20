@@ -13,10 +13,15 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
-import ExploreIcon from "@mui/icons-material/Explore";
-import FeedIcon from "@mui/icons-material/DynamicFeed";
 import { AppBar } from "@mui/material";
 import { Link, Outlet } from "react-router-dom"; // Import Link from react-router-dom
+import logo from "../../assets/travel_logo.png";
+import {
+  AirlineSeatReclineExtra,
+  BedroomParent,
+  Luggage,
+  ModeOfTravel,
+} from "@mui/icons-material";
 
 const drawerWidth = 240;
 
@@ -40,14 +45,6 @@ const closedMixin = (theme: Theme): CSSObject => ({
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-}));
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -75,8 +72,26 @@ export default function AppHeader() {
 
   const pages = [
     { text: "Home", icon: <HomeIcon />, path: "/" },
-    { text: "Explore", icon: <ExploreIcon />, path: "/planner" },
-    { text: "Feed", icon: <FeedIcon />, path: "/hotel-booking" },
+    {
+      path: "/hotel-booking",
+      text: "Hotel booking",
+      icon: <BedroomParent />,
+    },
+    {
+      path: "/travel-booking",
+      text: "Travel booking",
+      icon: <AirlineSeatReclineExtra />,
+    },
+    {
+      path: "/travel-map",
+      text: "Travel Maps",
+      icon: <ModeOfTravel />,
+    },
+    {
+      path: "/planner",
+      text: "Travel planner",
+      icon: <Luggage />,
+    },
   ];
 
   return (
@@ -89,12 +104,13 @@ export default function AppHeader() {
             aria-label="open drawer"
             onClick={toggleDrawer}
             edge="start"
-            sx={{ marginRight: 5 }}
+            sx={{ marginRight: 1 }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Simplified Drawer
+          <img src={logo} alt="Company-logo" width={"40"} />
+          <Typography sx={{ fontSize: "20px", fontWeight: 700 }} noWrap>
+            Wanderway
           </Typography>
         </Toolbar>
       </AppBar>
@@ -133,8 +149,7 @@ export default function AppHeader() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
+      <Box component="main" sx={{ mt: 8 }}>
         <Outlet />
       </Box>
     </Box>

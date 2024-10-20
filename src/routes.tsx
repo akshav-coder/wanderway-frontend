@@ -3,11 +3,9 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import AppHeader from "./components/common/AppHeader";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import PostFeed from "./pages/PostFeed";
 import Planner from "./pages/Planner";
 import HotelBooking from "./pages/HotelBooking";
+import TravelMap from "./pages/TravelMap";
 
 // Layout component to include AppHeader on all pages
 // const Layout: React.FC = () => {
@@ -28,16 +26,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/signin",
-        element: <SignIn />,
-      },
-      {
-        path: "/signup",
-        element: <SignUp />,
-      },
-      {
-        path: "/post-feed",
-        element: <PostFeed />,
+        path: "/travel-map",
+        element: <TravelMap />,
       },
       {
         path: "/planner",
@@ -47,6 +37,7 @@ const router = createBrowserRouter([
         path: "/hotel-booking",
         element: <HotelBooking />,
       },
+      { path: "/travel-booking", element: <Home /> },
     ],
   },
 ]);
