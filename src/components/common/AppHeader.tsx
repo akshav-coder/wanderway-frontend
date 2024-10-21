@@ -3,7 +3,6 @@ import { styled, Theme, CSSObject } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
-import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -96,7 +95,6 @@ export default function AppHeader() {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
       <AppBar position="fixed" elevation={0}>
         <Toolbar>
           <IconButton
@@ -149,7 +147,7 @@ export default function AppHeader() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ mt: 8 }}>
+      <Box sx={{ mt: 8, flexGrow: 1 }}>
         <Outlet />
       </Box>
     </Box>

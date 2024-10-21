@@ -1,7 +1,13 @@
+import { Box } from "@mui/material";
 import React from "react";
+import HomeSearch from "../components/HomeSearch";
 
 const Home: React.FC = () => {
-  return <div>Welcome to the Travel App!</div>;
+  return (
+    <Box sx={{ textAlign: "center" }}>
+      <HomeSearch />
+    </Box>
+  );
 };
 
 export default Home;
