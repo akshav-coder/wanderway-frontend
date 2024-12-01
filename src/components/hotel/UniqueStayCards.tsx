@@ -23,7 +23,7 @@ const UniqueStayCards: React.FC = () => {
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
   const totalBoxes = 15;
-  const boxesPerView = isMobile ? 1 : isTablet ? 2 : 3;
+  const boxesPerView = isMobile ? 1 : isTablet ? 2 : 4;
   const boxWidth = isMobile ? 250 : isTablet ? 200 : 200;
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -92,7 +92,13 @@ const UniqueStayCards: React.FC = () => {
       >
         Explore stays in trending destinations
       </Typography>
-      <Box sx={{ position: "relative", overflow: "hidden" }}>
+      <Box
+        sx={{
+          position: "relative",
+          overflow: "hidden",
+          "&:hover .navButton": { opacity: 1 }, // Show buttons on hover
+        }}
+      >
         {/* Carousel Track */}
         <Box
           sx={{
@@ -108,6 +114,7 @@ const UniqueStayCards: React.FC = () => {
 
         {/* Navigation Buttons */}
         <IconButton
+          className="navButton"
           onClick={handlePrev}
           sx={{
             position: "absolute",
@@ -115,12 +122,15 @@ const UniqueStayCards: React.FC = () => {
             left: 0,
             transform: "translateY(-50%)",
             backgroundColor: "rgba(255,255,255,0.7)",
+            opacity: 0,
+            transition: "opacity 0.3s ease",
             "&:hover": { backgroundColor: "rgba(255,255,255,0.9)" },
           }}
         >
           <ArrowBackIos />
         </IconButton>
         <IconButton
+          className="navButton"
           onClick={handleNext}
           sx={{
             position: "absolute",
@@ -128,6 +138,8 @@ const UniqueStayCards: React.FC = () => {
             right: 0,
             transform: "translateY(-50%)",
             backgroundColor: "rgba(255,255,255,0.7)",
+            opacity: 0,
+            transition: "opacity 0.3s ease",
             "&:hover": { backgroundColor: "rgba(255,255,255,0.9)" },
           }}
         >

@@ -9,7 +9,6 @@ import {
   Typography,
   useTheme,
   useMediaQuery,
-  TextFieldProps,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
